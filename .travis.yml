@@ -8,9 +8,10 @@ node: stable
 install:
 - npm i
 script:
-- npm run build
 - git remote rm origin
 - git remote add origin https://xing-zhi:${GH_TOKEN}@${GH_REF}
+- git checkout master
+- npm run build
 - git add .
 - git status
 - git commit -m 'build'
