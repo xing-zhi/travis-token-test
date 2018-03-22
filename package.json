@@ -1,0 +1,30 @@
+{
+  "name": "travis-token-test",
+  "version": "1.0.0",
+  "description": "使用token进行travis自动提交到分支练习。",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "build": "node build/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xing-zhi/travis-token-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xing-zhi/travis-token-test/issues"
+  },
+  "homepage": "https://github.com/xing-zhi/travis-token-test#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "del": "^3.0.0",
+    "rollup": "^0.57.1",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-uglify": "^3.0.0"
+  }
+}
