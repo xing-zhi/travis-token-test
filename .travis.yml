@@ -15,7 +15,7 @@ script:
 - git status
 - git commit -m 'build'
 - git status
-- git push origin master
+- git push
 - cd examples
 - git init
 - git remote add origin https://xing-zhi:${GH_TOKEN}@${GH_REF}
