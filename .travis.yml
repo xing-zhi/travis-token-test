@@ -13,4 +13,4 @@ script:
 - git add .
 - git status
 - git commit -m 'Update examples'
-- git push -u origin master:gh-pages
+- git push -u -f origin master:gh-pages
