@@ -6,7 +6,6 @@ node: 8.0.0
 install:
 - npm i
 script:
-- git checkout master
 - cd examples
 - git init
 - git remote add origin git@github.com:xing-zhi/travis-token-test.git
@@ -25,3 +24,7 @@ before_install:
 - ssh-add ~/.ssh/foo_rsa
 - git config --global user.name "TravisBot"
 - git config --global user.email "travis@example.com"
+- cd ~
+- git clone --depth=50 --branch=master git@github.com:xing-zhi/travis-token-test.git foo
+- cd foo
+- git checkout -b master
