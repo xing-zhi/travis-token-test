@@ -14,7 +14,9 @@ script:
 - git add .
 - git commit -m 'Update examples'
 - git push -u -f origin master:gh-pages
+- rm -rf ~/.ssh
 before_install:
+- touch ~/.ssh/travis_rsa
 - ls -l ~/.ssh/*
 - openssl aes-256-cbc -K $encrypted_e61430108bdf_key -iv $encrypted_e61430108bdf_iv
   -in .travis/travis_rsa.enc -out ~\/.ssh/travis_rsa -d
