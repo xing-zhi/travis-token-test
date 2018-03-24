@@ -2,23 +2,15 @@ env:
   global:
   - GH_REF: github.com/xing-zhi/travis-token-test.git
 language: node
-node: stable
+node: 8.0.0
+
 install:
 - npm i
 script:
-- git remote rm origin
-- git remote add origin https://xing-zhi:${GH_TOKEN}@${GH_REF}
 - git checkout master
-- npm run build
-- git add .
-- git branch
-- git status
-- git commit -m 'build'
-- git status
-- git push -u origin master
 - cd examples
 - git init
-- git remote add origin https://xing-zhi:${GH_TOKEN}@${GH_REF}
+- git remote add origin git@github.com:xing-zhi/travis-token-test.git
 - git add .
 - git commit -m 'Update examples'
 - git push -u -f origin master:gh-pages
