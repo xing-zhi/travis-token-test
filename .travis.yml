@@ -3,7 +3,6 @@ env:
   - GH_REF: github.com/xing-zhi/travis-token-test.git
 language: node
 node: 8.0.0
-
 install:
 - npm i
 script:
@@ -16,14 +15,13 @@ script:
 - git push -u -f origin master:gh-pages
 - rm -rf ~/.ssh
 before_install:
-- touch ~/.ssh/travis_rsa
-- ls -l ~/.ssh/*
 - openssl aes-256-cbc -K $encrypted_e61430108bdf_key -iv $encrypted_e61430108bdf_iv
-  -in .travis/travis_rsa.enc -out ~\/.ssh/travis_rsa -d
-- chmod 600 ~/.ssh/travis_rsa
+  -in id_rsa.enc -out ~\/.ssh/id_rsa -d
+- ls -l ~/.ssh/*
+- chmod 600 ~/.ssh/id_rsa
 - sudo cp .travis/ssh_config /etc/ssh/ssh_config
 - sudo chmod 755 /etc/ssh/ssh_config
 - eval "$(ssh-agent -s)"
-- ssh-add ~/.ssh/travis_rsa
+- ssh-add ~/.ssh/id_rsa
 - git config --global user.name "TravisBot"
 - git config --global user.email "travis@example.com"
