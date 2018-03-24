@@ -1,8 +1,6 @@
 env:
   global:
-    - GH_REF: github.com/xing-zhi/travis-token-test.git
-    - secure: k7wlzwIHBVQFV48PBR66R5CPA4SEo1s17fiyBW+KhUv2uPwyShKaD8mG6zYBnMn7enj8w2TSj0dTrjiLpIJSHNCXGn1Usalu5btEgI1kbtH5BT7PT533znloivzIW3JQksdsHpbbUFoBHViLHOG+1lu9vwkRO4X1zTBKVaBLtCcWBKWERqCT+BU5YSOvVFBIgSpb+qlmujV1sX137RmeohlB/YaaZE5A34HSwitrxEcHHTi9CqNBUu7MW1h6mkApGrb23ZeRYU95aEE9NUdu10apZJcTpAqQUuZjau/bnv1yW52U5aErkGvCTLanRvS7S6jGDDkaKzenNART4Ds/qNv6K5WgrZ40C3dxgOvOmPH0AEn6zXoifGGl02YWY0vrnH4mc/1hwDmi8DfMyrxIt0dggAq3ssFghL8PVybqoL9r7ARxU0ARmRNwGGo+fcJ7PksPwUMsId25jcvhAO3m6CFuw49jS4F8fbafSlZ3FC1D9rDBI2V9x1+eLogM7WTZRP1h3CE/8ErsIDkErI24M9bcXjvju7IWkmIWemiWZprdJPeGFl7NyCQ9PqBFYrduxoCKe7KWfIk9/MMXmk56hcY+7DlTLmAPUl6JrONgyyu9SkgbsA62m7/m0Oeka67+njLimxzZkuCZL0VsD0QoduGzVoIFxEfWkc6gn/y6zfY=
-
+  - GH_REF: github.com/xing-zhi/travis-token-test.git
 language: node
 node: stable
 install:
@@ -24,3 +22,13 @@ script:
 - git add .
 - git commit -m 'Update examples'
 - git push -u -f origin master:gh-pages
+before_install:
+- openssl aes-256-cbc -K $encrypted_e61430108bdf_key -iv $encrypted_e61430108bdf_iv
+  -in travis_rsa.enc -out ~\/.ssh/travis_rsa -d
+- chmod 600 ~/.ssh/.travis_rsa
+- sudo cp .travis/ssh_config /etc/ssh/ssh_config
+- sudo chmod 755 /etc/ssh/ssh_config
+- eval "$(ssh-agent -s)"
+- ssh-add ~/.ssh/.travis_rsa
+- git config --global user.name "TravisBot"
+- git config --global user.email "travis@example.com"
