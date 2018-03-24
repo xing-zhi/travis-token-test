@@ -16,12 +16,12 @@ script:
 - rm -rf ~/.ssh
 before_install:
 - openssl aes-256-cbc -K $encrypted_e61430108bdf_key -iv $encrypted_e61430108bdf_iv
-  -in id_rsa.enc -out ~\/.ssh/id_rsa -d
+  -in foo_rsa.enc -out ~/.ssh/foo_rsa -d
 - ls -l ~/.ssh/*
-- chmod 600 ~/.ssh/id_rsa
+- chmod 600 ~/.ssh/foo_rsa
 - sudo cp .travis/ssh_config /etc/ssh/ssh_config
 - sudo chmod 755 /etc/ssh/ssh_config
 - eval "$(ssh-agent -s)"
-- ssh-add ~/.ssh/id_rsa
+- ssh-add ~/.ssh/foo_rsa
 - git config --global user.name "TravisBot"
 - git config --global user.email "travis@example.com"
